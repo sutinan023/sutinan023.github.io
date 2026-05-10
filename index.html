@@ -16,12 +16,13 @@
     <title>MY PORTFOLIO - Home</title>
     <style>
       :root {
-        --primary-color: #f48f68;
+        --primary-color: #F13E93; /*ชมพูเข้ม*/
         --secondary-color: #8bdfdd;
         --variant-color: #c0e1d2;
-        --accent-color: pink;
-        --background-color: #fff6de;
+        --accent-color: #F891BB; /*ชมพูอ่อน*/
+        --background-color: #F5F5F5;
         --text-color: black;
+        --yellow-color: #FAFFCB;
       }
       * {
         margin: 0;
@@ -35,6 +36,9 @@
         font-size: 0.9rem;
         font-weight: 600;
       }
+      nav{
+        background-color: var(--primary-color);
+      }
       .img-profile {
         max-width: 300px;
         border: 4px solid var(--primary-color);
@@ -42,7 +46,7 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top px-4">
+    <nav class="navbar navbar-expand-lg sticky-top px-4">
       <a class="navbar-brand d-flex align-items-center" href="home.html">
         <img
           src="img/ppw.jpg"
@@ -107,8 +111,41 @@
           <p>มีประสบการณ์ในการพัฒนาเว็บไซต์และสนับสนุนระบบ ERP ในองค์กรต่างๆ
           ทำงานร่วมกับทีมเพื่อสร้างโซลูชันที่ตอบโจทย์ความต้องการของลูกค้า</p>
         </div>
+      </div>
+      <hr>
+      <h1 class="mt-4 text-primary">My Interests</h1>
+      <p>นอกจากการพัฒนาเว็บไซต์แล้ว<br>ยังมีกิจกรรมและสิ่งต่าง ๆ ที่ช่วยเติมแรงบันดาลใจในการทำงานและการใช้ชีวิต 😊</p>
+      <div class="row g-4" >
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img src="img/int01.png" class="card-img-top" alt="My Interests 1" />
+            <div class="card-body">
+              <h5 class="card-title">Interest 1</h5>
+              <p class="card-text">Description of Interest 1.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img src="img/int02.png" class="card-img-top" alt="My Interests 2" />
+            <div class="card-body">
+              <h5 class="card-title">Interest 2</h5>
+              <p class="card-text">Description of Interest 2.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img src="img/int03.png" class="card-img-top" alt="My Interests 1" />
+            <div class="card-body">
+              <h5 class="card-title">Interest 3</h5>
+              <p class="card-text">Description of Interest 3.</p>
+            </div>
+          </div>
+      </div>
+      
     </main>
-    <footer class="bg-dark text-light text-center py-3 sticky-bottom">
+    <footer class="bg-dark text-light text-center py-3 footer">
       <p>Thank you for visiting my portfolio 😊</p>
     </footer>
   </body>
