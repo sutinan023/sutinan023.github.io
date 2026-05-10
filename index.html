@@ -16,16 +16,18 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
     <title>MY PORTFOLIO - Home</title>
     <style>
       :root {
-        --primary-color: #f13e93; /*ชมพูเข้ม*/
-        --secondary-color: #8bdfdd;
+        --primary-color: #8a5f41; /*ชมพูเข้ม*/
+        --secondary-color: #a77f60;
         --variant-color: #c0e1d2;
         --accent-color: #f891bb; /*ชมพูอ่อน*/
         --background-color: #f5f5f5;
-        --text-color: black;
-        --yellow-color: #faffcb;
+        --text-color: #a77f60;
+        --yellow-color: #f3e4c9;
+        --green-color: #ccd67f;
       }
       * {
         margin: 0;
@@ -34,17 +36,208 @@
         font-family: "Noto Sans Thai", sans-serif;
         background-color: var(--background-color);
         color: var(--text-color);
+        background-color: var(--yellow-color);
       }
-      .nav-link {
-        font-size: 0.9rem;
-        font-weight: 600;
+      .container {
+        background-color: var(--background-color);
+      }
+      .text-subtitle {
+        color: var(--green-color);
       }
       nav {
         background-color: var(--primary-color);
       }
+      .nav-link {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--yellow-color);
+      }
+      .nav-link.active {
+        color: var(--green-color) !important;
+      }
+      .navbar-brand span {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--yellow-color);
+      }
       .img-profile {
         max-width: 300px;
-        border: 4px solid var(--primary-color);
+        display: block;
+        margin: 0 auto;
+      }
+      .custom-toggler {
+        border: none;
+        background: transparent;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .custom-toggler span {
+        width: 26px;
+        height: 3px;
+        background: var(--yellow-color);
+        border-radius: 10px;
+        transition: 0.3s ease;
+      }
+      .custom-toggler {
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+      }
+      .custom-toggler[aria-expanded="true"] span:nth-child(1) {
+        transform: rotate(45deg) translateY(8px);
+      }
+
+      .custom-toggler[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .custom-toggler[aria-expanded="true"] span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-8px);
+      }
+      .custom-toggler:focus,
+      .custom-toggler:active,
+      .custom-toggler:focus-visible {
+        outline: none;
+        box-shadow: none;
+      }
+
+      .fade-text {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fadeUp 1s ease forwards;
+      }
+
+      .fade-text:nth-child(2) {
+        animation-delay: 1s;
+      }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* intro popup */
+      .intro-toggle {
+        display: none;
+      }
+
+      .intro-popup {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: rgba(40, 28, 20, 0.35);
+        backdrop-filter: blur(6px);
+
+        animation: introFade 0.4s ease forwards;
+      }
+
+      .intro-box {
+        position: relative;
+        width: min(90%, 520px);
+        padding: 40px 32px;
+        text-align: center;
+
+        background: rgba(255, 248, 235, 0.92);
+        border: 1px solid rgba(255, 212, 120, 0.4);
+        border-radius: 28px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+
+        transform: translateY(40px);
+        opacity: 0;
+
+        animation: popupUp 0.7s ease forwards;
+      }
+
+      .intro-box h1 {
+        margin-bottom: 12px;
+        color: #4b2e20;
+      }
+
+      .intro-box p {
+        margin: 0;
+        color: #7a5a42;
+      }
+
+      /* animation ตอนเด้งขึ้น */
+      @keyframes popupUp {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes introFade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .intro-toggle:checked + .intro-popup {
+        animation: popupClose 2s ease forwards;
+      }
+
+      @keyframes popupClose {
+        0%,
+        45% {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        100% {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+        }
+      }
+      .intro-box {
+        position: relative;
+      }
+
+      .avatar {
+        display: block;
+        margin: 0 auto 16px;
+        transition: opacity 0.6s ease;
+      }
+
+      .avatar-1 {
+        opacity: 1;
+      }
+
+      .avatar-2 {
+        opacity: 0;
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .intro-toggle:checked + .intro-popup .avatar-1 {
+        opacity: 0;
+      }
+
+      .intro-toggle:checked + .intro-popup .avatar-2 {
+        opacity: 1;
+      }
+
+      .music-btn {
+        padding: 10px 18px;
+        background: var(--green-color);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 999px;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s ease;
       }
     </style>
   </head>
@@ -52,74 +245,116 @@
     <nav class="navbar navbar-expand-lg sticky-top px-4">
       <a class="navbar-brand d-flex align-items-center" href="home.html">
         <img
-          src="img/ppw.jpg"
+          src="img/icon-v1.png"
           alt="logo"
           width="45"
           height="45"
           class="rounded-circle me-2"
         />
-        <span>MY PORTFOLIO</span>
+        <span>Portfolio</span>
       </a>
 
       <button
-        class="navbar-toggler"
+        class="navbar-toggler custom-toggler"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#mainNavbar"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
-
       <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="home.html">HOME</a>
+            <a class="nav-link active" href="#welcome">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">ABOUT</a>
+            <a class="nav-link" href="#about">ABOUT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">CONTACT</a>
+            <a class="nav-link" href="#interests">INTERESTS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">CONTACT</a>
           </li>
         </ul>
       </div>
     </nav>
-    <main class="container px-4 py-2">
-      <div class="row">
-        <div class="col-12 col-md-6 col-lg-6">
-          <h1>SUTINAN PARAPHIM</h1>
-          <h3 class="text-primary">Web Developer & ERP Support</h3>
-          <p>
-            สนใจการออกแบบเว็บไซต์และระบบที่ช่วยให้การทำงานง่ายขึ้น ชอบเรียนรู้
-            พัฒนาระบบ และสร้างประสบการณ์ที่ใช้งานได้จริง
-          </p>
-        </div>
-        <div class="col-12 col-md-6 col-lg-6">
+
+    <main class="container p-4 p-md-5 rounded">
+      <input type="checkbox" id="closeIntro" class="intro-toggle" />
+      <section class="intro-popup">
+        <div class="intro-box">
+          <!-- รูปแรก -->
           <img
-            src="img/ppw.jpg"
-            alt="image-profile"
-            class="img-fluid img-profile rounded"
+            src="img/me-v1.png"
+            class="avatar avatar-1 rounded-circle mb-3"
+            width="200"
+            height="200"
           />
+
+          <!-- รูปสอง -->
+          <img
+            src="img/me-v2.png"
+            class="avatar avatar-2 rounded-circle mb-3"
+            width="200"
+            height="200"
+          />
+
+          <h1>Hi there 👋</h1>
+
+          <p>Thanks for visiting my portfolio.</p>
+
+          <label
+            for="closeIntro"
+            class="btn btn-warning rounded-pill px-4 mt-3"
+          >
+            Say Hi ✨
+          </label>
         </div>
-      </div>
-      <div class="row mt-4">
-        <div class="col-12 col-md-6 col-lg-6">
-          <h2>Skills</h2>
-          <ul>
-            <li>Web Development: HTML, CSS, JavaScript</li>
-            <li>ERP Support: Microsoft Dynamics</li>
-            <li>Database Management: MySQL</li>
-          </ul>
+      </section>
+      <section id="welcome">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-6">
+            <h1>SUTINAN PARAPHIM</h1>
+            <h3 class="text-subtitle">Web Developer & ERP Support</h3>
+            <p class="lead">
+              ยินดีต้อนรับสู่พอร์ตโฟลิโอของฉัน!
+              ฉันเป็นนักพัฒนาเว็บไซต์และผู้สนับสนุนระบบ ERP
+              ที่มีประสบการณ์ในการสร้างและดูแลเว็บไซต์ รวมถึงการสนับสนุนระบบ ERP
+              ในองค์กรของฉัน
+            </p>
+          </div>
+          <div class="col-12 col-md-6 col-lg-6">
+            <img
+              src="img/me-v1.png"
+              alt="image-profile"
+              class="img-fluid img-profile rounded"
+            />
+          </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-6">
-          <h2>Experience</h2>
-          <p>
-            มีประสบการณ์ในการพัฒนาเว็บไซต์และสนับสนุนระบบ ERP ในองค์กรต่างๆ
-            ทำงานร่วมกับทีมเพื่อสร้างโซลูชันที่ตอบโจทย์ความต้องการของลูกค้า
-          </p>
+        <div class="row mt-4">
+          <div class="col-12 col-md-6 col-lg-6">
+            <h2>Skills</h2>
+            <ul>
+              <li>Web Development: HTML, CSS, PHP, JavaScript</li>
+              <li>ERP Support: AX2012, Microsoft Dynamics D365</li>
+              <li>Database Management: MySQL, SQL Server</li>
+            </ul>
+          </div>
+          <div class="col-12 col-md-6 col-lg-6">
+            <h2>Experience</h2>
+            <p>
+              มีประสบการณ์ในการพัฒนาเว็บไซต์และสนับสนุนระบบ ERP ในองค์กรต่างๆ
+              ทำงานร่วมกับทีมเพื่อสร้างโซลูชันที่ตอบโจทย์ความต้องการของลูกค้า
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
+
       <hr />
+      <section id="interests">
       <h1 class="mt-4 text-primary">My Interests</h1>
       <p>
         นอกจากการพัฒนาเว็บไซต์แล้ว<br />ยังมีกิจกรรมและสิ่งต่าง ๆ
@@ -162,6 +397,13 @@
             <div class="card-body">
               <h5 class="card-title">Interest 3</h5>
               <p class="card-text">Description of Interest 3.</p>
+              <a
+                href="https://www.youtube.com/watch?v=AwdFje2iNuU"
+                target="_blank"
+                class="music-btn text-decoration-none"
+              >
+                🎧 Play Music
+              </a>
             </div>
           </div>
         </div>
@@ -179,6 +421,7 @@
           </div>
         </div>
       </div>
+      </section>
     </main>
     <footer class="bg-dark text-light text-center py-3 footer">
       <p>Thank you for visiting my portfolio 😊</p>
